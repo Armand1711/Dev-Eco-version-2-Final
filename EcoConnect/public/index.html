@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="EcoConnect - Connecting People for a Sustainable Future" />
+    <meta name="author" content="EcoConnect Team" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>EcoConnect - Sustainable Living</title>
+    <!-- Bootstrap Style -->
+    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <!-- Font-Awesome Style -->
+    <link href="styles/font-awesome.min.css" rel="stylesheet" />
+    <!-- Animation Style -->
+    <link href="styles/animate.css" rel="stylesheet" />
+    <!-- Pretty Photo Style -->
+    <link href="styles/prettyPhoto.css" rel="stylesheet" />
+    <!-- Google Font Style -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- Custom Style -->
+    <link href="styles/style.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="pre-div">
+        <div id="loader"></div>
+    </div>
+    <!--/. PRELOADER END -->
+    <div class="navbar navbar-default navbar-fixed-top move-me">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="public/img/logo.png" class="navbar-brand-logo" alt="EcoConnect Logo" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse move-me">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#home">HOME</a>
+                    </li>
+                    <li>
+                        <a href="#about">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio">GALLERY</a>
+                    </li>
+                    <li>
+                        <a href="#help">HOW TO HELP?</a>
+                    </li>
+                    <li>
+                        <a href="#contact">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--./ NAV BAR END -->
+</body>
+</html>
+
+<div id="home">
+    <div class="overlay">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-9 col-md-9 head-text">
+                    <h1 id="divDisp">WHY WE NEED YOUR SUPPORT</h1>
+                    <span>
+                        <i class="fa fa-lightbulb-o"></i> To plant new trees and restore habitats
+                    </span>
+                    <span>
+                        <i class="fa fa-lightbulb-o"></i> To promote environmental education in schools
+                    </span>
+                    <span>
+                        <i class="fa fa-lightbulb-o"></i> To encourage sustainable practices within communities
+                    </span>
+                    <span>
+                        <i class="fa fa-lightbulb-o"></i> To recycle waste and reduce pollution
+                    </span>
+                    <span>
+                        <i class="fa fa-lightbulb-o"></i> To maintain ecological balance and biodiversity
+                    </span>
+                    <span>
+                        <i class="fa fa-lightbulb-o"></i> To research and develop new eco-friendly techniques
+                    </span>
+                </div>
+
+                <div class="col-lg-3 col-md-3">
+                    <div class="div-trans text-center">
+                        <h3>SUPPORT US & MAKE A DIFFERENCE</h3>
+                        <h2>
+                            <i class="fa fa-code"></i><span>PROTECT OUR PLANET</span> <i class="fa fa-code"></i>
+                        </h2>
+                        <form id="donationForm">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="donationName" required placeholder="Your Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="donationEmail" required placeholder="Email Address">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" id="donationAmount" required placeholder="Donation Amount ($)">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-block btn-lg">DONATE NOW</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Include jQuery library -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script>
+                    $('#donationForm').on('submit', function(event) {
+                        event.preventDefault(); // Prevent the default form submission
+                
+                        const formData = {
+                            name: $('#donationName').val(),
+                            email: $('#donationEmail').val(),
+                            amount: $('#donationAmount').val()
+                        };
+                
+                        $.ajax({
+                            type: 'POST',
+                            url: '/donations', // The endpoint where donations will be submitted
+                            contentType: 'application/json',
+                            data: JSON.stringify(formData),
+                            success: function(response) {
+                                alert('Donation successful! Thank you!');
+                                $('#donationForm')[0].reset(); // Reset the form
+                            },
+                            error: function(error) {
+                                alert('There was an error processing your donation.');
+                                console.error(error);
+                            }
+                        });
+                    });
+                </script>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--./ HOME SECTION END -->
+    <!--./ About Start -->
+<div id="about">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 sub-head">
+                <h2 data-wow-delay="0.3s" class="wow rollIn animated"><strong>ABOUT US</strong></h2>
+                <p class="sub-head">At EcoConnect, we are dedicated to promoting environmental awareness and sustainable practices. Our mission is to connect communities with eco-friendly initiatives that make a difference.</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-lg-4 col-md-4">
+                <div class="media wow rotateIn animated" data-wow-delay="0.2s">
+                    <div class="pull-left">
+                        <i class="fa fa-recycle fa-4x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Promoting Recycling</h3>
+                        <p>
+                            We advocate for recycling to minimize waste and conserve resources, encouraging communities to adopt sustainable practices.
+                        </p>
+                    </div>
+                </div>
+                <div class="media wow rotateIn animated" data-wow-delay="0.3s">
+                    <div class="pull-left">
+                        <i class="fa fa-history fa-4x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Eco-Friendly Techniques</h3>
+                        <p>
+                            We research and promote innovative eco-friendly techniques that support sustainability and environmental health.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 wow bounceInDown animated" style="padding: 10px;" data-wow-delay="0.6s">
+                <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item">
+                            <img src="assets/img/slider/1.jpg" class="img-thumbnail" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="assets/img/slider/2.png" class="img-thumbnail" alt="">
+                        </div>
+                        <div class="item active">
+                            <img src="assets/img/slider/3.jpg" class="img-thumbnail" alt="">
+                        </div>
+                    </div>
+                    <!--INDICATORS-->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-slider" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-slider" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-slider" data-slide-to="2" class="active"></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="media wow rotateIn animated" data-wow-delay="0.4s">
+                    <div class="pull-left">
+                        <i class="fa fa-star-o fa-4x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Waste Reduction</h3>
+                        <p>
+                            We focus on strategies to reduce waste through community programs and education on sustainable consumption.
+                        </p>
+                    </div>
+                </div>
+                <div class="media wow rotateIn animated" data-wow-delay="0.5s">
+                    <div class="pull-left">
+                        <i class="fa fa-life-ring fa-4x"></i>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Resource Utilization</h3>
+                        <p>
+                            We promote efficient resource utilization to support environmental conservation and reduce our ecological footprint.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pad-top-botm wow flipInX animated" data-wow-delay="0.7s">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <h3><strong>Our Profile</strong></h3>
+                <p>
+                    EcoConnect is a community-driven initiative focused on fostering environmental sustainability through education, collaboration, and action. We believe in empowering individuals and organizations to take steps toward a greener future.
+                </p>
+                <p>
+                    Our programs include workshops, community clean-ups, and partnerships with local businesses to promote eco-friendly practices. Together, we can create a positive impact on our planet.
+                </p>
+                <p>
+                    Join us in our mission to protect the environment for future generations and build a sustainable world for all.
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                <i class="fa fa-lightbulb-o big-icon"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<!--./ About end -->
+
+<!-- DONORS TESTIMONIALS START -->
+<div class="donars-section">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div id="testimonials" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#testimonials" data-slide-to="0" class=""></li>
+                            <li data-target="#testimonials" data-slide-to="1" class=""></li>
+                            <li data-target="#testimonials" data-slide-to="2" class="active"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="container center">
+                                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
+                                        <h4><i class="fa fa-quote-left"></i>"EcoConnect has transformed our community's approach to sustainability. The workshops have inspired many to adopt greener practices!"<i class="fa fa-quote-right"></i></h4>
+                                        <div class="user-img pull-right">
+                                            <img src="assets/img/user2.png" alt="User profile picture" class="img-circle image-responsive">
+                                        </div>
+                                        <h5 class="pull-right"><strong class="c-black">Jane Smith</strong>, Community Leader</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="container center">
+                                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
+                                        <h4><i class="fa fa-quote-left"></i>"I am grateful to be part of a project that makes such a positive impact. The EcoConnect team is dedicated and inspiring!"<i class="fa fa-quote-right"></i></h4>
+                                        <div class="user-img pull-right">
+                                            <img src="assets/img/user.gif" alt="User profile picture" class="img-circle image-responsive">
+                                        </div>
+                                        <h5 class="pull-right"><strong class="c-black">John Doe</strong>, Eco-Contributor</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="container center">
+                                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 slide-custom">
+                                        <h4><i class="fa fa-quote-left"></i>"The initiatives led by EcoConnect have brought our community closer and raised awareness about environmental issues." <i class="fa fa-quote-right"></i></h4>
+                                        <div class="user-img pull-right">
+                                            <img src="assets/img/user2.png" alt="User profile picture" class="img-circle image-responsive">
+                                        </div>
+                                        <h5 class="pull-right"><strong class="c-black">Sarah Johnson</strong>, Local Volunteer</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- DONORS TESTIMONIALS END -->
+
+
+<!-- GALLERY SECTION START -->
+<div id="port-folio" class="pad-top-botm">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2 data-wow-delay="0.3s" class="wow rollIn animated"><strong>GALLERY</strong></h2>
+                <p class="sub-head">Explore our initiatives and events through our gallery.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="portfolio-item wow rotateIn animated" data-wow-delay="0.4s">
+                    <img src="assets/img/portfolio/g.jpg" class="img-responsive" alt="Community Cleanup Day">
+                    <div class="overlay">
+                        <p>
+                            <span>Image Original Size: 750x500</span>
+                            Community Cleanup Day
+                        </p>
+                        <a class="preview" title="Community Cleanup Day" href="assets/img/portfolio/g.jpg"><i class="fa fa-search-plus fa-5x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="portfolio-item wow rotateIn animated" data-wow-delay="0.5s">
+                    <img src="assets/img/portfolio/b.jpg" class="img-responsive" alt="Tree Planting Initiative">
+                    <div class="overlay">
+                        <p>
+                            <span>Image Original Size: 750x500</span>
+                            Tree Planting Initiative
+                        </p>
+                        <a class="preview" title="Tree Planting Initiative" href="assets/img/portfolio/b.jpg"><i class="fa fa-search-plus fa-5x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="portfolio-item wow rotateIn animated" data-wow-delay="0.6s">
+                    <img src="assets/img/portfolio/p.jpg" class="img-responsive" alt="Eco-Friendly Workshop">
+                    <div class="overlay">
+                        <p>
+                            <span>Image Original Size: 750x500</span>
+                            Eco-Friendly Workshop
+                        </p>
+                        <a class="preview" title="Eco-Friendly Workshop" href="assets/img/portfolio/p.jpg"><i class="fa fa-search-plus fa-5x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- GALLERY SECTION END -->
+
+<style>
+    .video-container {
+        position: relative;
+        width: 100%; /* Responsive */
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none; /* Optional: remove iframe border */
+    }
+</style>
+
+<div id="help">
+    <div class="overlay">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <h2 data-wow-delay="0.3s" class="wow rollIn animated"><strong>HOW YOU CAN HELP?</strong></h2>
+                    <p class="sub-head">Check out this video, which will let you know how you can help us save the Earth and let it live long peacefully.</p>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1">
+                    <div class="video-container wow rotateIn animated" data-wow-delay="0.4s">
+                        <iframe src="http://player.vimeo.com/video/18312392" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4" style="padding-top: 50px;">
+                    <div class="media wow rotateIn animated" data-wow-delay="0.5s">
+                        <div class="pull-left">
+                            <i class="fa fa-star-o fa-4x"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Watch This Video</h3>
+                            <p>
+                                Discover the various ways you can contribute to environmental conservation and make a positive impact.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="media wow rotateIn animated" data-wow-delay="0.6s">
+                        <div class="pull-left">
+                            <i class="fa fa-history fa-4x"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Donate to Support Us</h3>
+                            <p>
+                                Your financial contributions enable us to expand our initiatives and reach more communities. Every donation counts!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--./ HELP SECTION END -->
+
+<div id="contact">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <h2 data-wow-delay="0.3s" class="wow rollIn animated"><strong>CONTACT US</strong></h2>
+                <p class="sub-head">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec molestie non sem vel condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                <p class="sub-head wow rotateIn animated" data-wow-delay="0.4s"><strong>ADDRESS:</strong> 1234 Main Street, Cape Town, South Africa - 8001</p>
+            </div>
+        </div>
+        <div class="row text-center wow rotateIn animated" data-wow-delay="0.4s">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <a href="#"><img src="assets/img/Social/facebook.png" alt="" /></a>
+                <a href="#"><img src="assets/img/Social/google-plus.png" alt="" /></a>
+                <a href="#"><img src="assets/img/Social/twitter.png" alt="" /></a>
+            </div>
+        </div>
+        <div class="row pad-top-botm">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control wow rotateIn animated" data-wow-delay="0.5s" id="contactName" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control wow rotateIn animated" required data-wow-delay="0.6s" id="contactEmail" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="contactMessage" required data-wow-delay="0.7s" class="wow rotateIn animated form-control" style="min-height: 150px;" placeholder="Message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block btn-lg wow rotateIn animated" data-wow-delay="0.8s">SUBMIT REQUEST</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--./ CONTACT SECTION END -->
+
+<!-- Include jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('#contactForm').on('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = {
+            name: $('#contactName').val(),
+            email: $('#contactEmail').val(),
+            message: $('#contactMessage').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/contactUs', // The endpoint where contact requests will be submitted
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+                alert('Your message has been sent successfully!');
+                $('#contactForm')[0].reset(); // Reset the form
+            },
+            error: function(error) {
+                alert('There was an error processing your request.');
+                console.error(error);
+            }
+        });
+    });
+</script>
+
+
+<div id="footer-end">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                &copy; 2024 <a href="http://www.yourdomain.com/" style="color:#fff;" target="_blank">mydomain.com</a> | Developed by <a style="color:#fff;" target="_blank">Armand Naude 231181</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--./ FOOTER SECTION END -->
+<!--  Jquery Core Script -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!--  Core Bootstrap Script -->
+<script src="assets/js/bootstrap.js"></script>
+<!--  WOW Script -->
+<script src="assets/js/wow.min.js"></script>
+<!--  Scrolling Script -->
+<script src="assets/js/jquery.easing.min.js"></script>
+<!--  PrettyPhoto Script -->
+<script src="assets/js/jquery.prettyPhoto.js"></script>
+<!--  Custom Scripts -->
+<script src="assets/js/custom.js"></script>
+
+</body>
+</html>
