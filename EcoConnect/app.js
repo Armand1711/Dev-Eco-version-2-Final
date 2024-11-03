@@ -1,27 +1,22 @@
 const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const donationRoutes = require('./routes/donationRoutes'); // Import donation routes
-
-dotenv.config(); // Load environment variables from .env file
-
+const connectDB = require('./config/db'); 
+const donationRoutes = require('./routes/donationRoutes'); 
+const contactRoutes = require('./routes/contactRoutes'); 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Connect to MongoDB
 connectDB();
 
-app.use(express.json()); // Middleware to parse JSON
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Use donation routes
-app.use('/api/donations', donationRoutes); // Base route for donation API
+// Routes
+app.use('/api/donations', donationRoutes);
+app.use('/api', contactRoutes);
 
-// Simple route to test the server
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
-
-const PORT = process.env.PORT || 5000;
-
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
